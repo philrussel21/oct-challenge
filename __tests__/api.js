@@ -21,7 +21,6 @@ describe('Hello Route', () => {
   test('should return okay but with no content', async () => {
     const res = await request(app).get('/hello');
     expect(res.statusCode).toBe(204)
-    expect(res.body).toBe({})
   });
 });
 
