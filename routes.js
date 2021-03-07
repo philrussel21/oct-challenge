@@ -1,11 +1,15 @@
 const express = require('express')
 const router = express.Router()
-// const {
-//   getHello
-// } = require('../controllers/s');
+const {
+  getHomePage,
+  getHello
+} = require('./controllers/api_controller')
 
-// Returns helloworld
-// router.get('/hello', getHello);
+
+router.get("/", getHomePage)
+
+// Returns hello
+router.get('/hello', getHello);
 
 // Returns one  with given id
 // router.get('/:id', get);
@@ -19,4 +23,4 @@ const router = express.Router()
 // Updates a  with given id
 // router.patch('/:id', change);
 
-module.exports = { router }
+module.exports = router

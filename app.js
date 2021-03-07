@@ -4,10 +4,6 @@ const routes = require('./routes')
 // express app
 const app = express()
 
-
-
-app.get("/", (req, res) => {
-  res.status(200).send("Hello World!")
-})
+app.use("/", routes)
 
 module.exports = app
