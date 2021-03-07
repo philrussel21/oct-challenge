@@ -1,9 +1,13 @@
-const { app } = require('./server')
+const express = require('express')
+const routes = require('./routes')
 
-const server = app.listen(3000, () => {
-  console.log("Server up, listening to port 3000!")
-})
+// express app
+const app = express()
+
+
 
 app.get("/", (req, res) => {
   res.status(200).send("Hello World!")
 })
+
+module.exports = app

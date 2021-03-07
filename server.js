@@ -1,6 +1,5 @@
-const express = require('express')
-const routes = require('./routes')
-// express app
-const app = express()
+const app = require("./app");
 
-module.exports = { app }
+app.listen(3000, () => {
+  console.log("Server up, listening to port 3000!");
+});
