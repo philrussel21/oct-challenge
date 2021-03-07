@@ -30,7 +30,7 @@ describe('Sum Route', () => {
     const sum = nums.reduce((accum, currVal) => accum + currVal)
     const res = await request(app).get(`/sum?numbers=${nums[0]},${nums[1]},${nums[2]}`)
     expect(res.statusCode).toBe(200)
-    expect(res.body).toBe(sum)
+    expect(res.text).toBe(sum.toString())
   });
 });
 

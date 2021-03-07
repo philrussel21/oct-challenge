@@ -2,7 +2,8 @@ const express = require('express')
 const router = express.Router()
 const {
   getHomePage,
-  getHello
+  getHello,
+  getSum
 } = require('./controllers/api_controller')
 
 
@@ -11,8 +12,8 @@ router.get("/", getHomePage)
 // Returns hello
 router.get('/hello', getHello);
 
-// Returns one  with given id
-// router.get('/:id', get);
+// Returns the sum of the numbers in the query
+router.get('/sum', getSum)
 
 // Creates a new 
 // router.('/', make);
