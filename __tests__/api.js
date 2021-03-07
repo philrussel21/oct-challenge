@@ -10,10 +10,9 @@ describe('Integrate Jest', () => {
 });
 
 describe('Integrate Supertest', () => {
-  test('should return home page string', () => {
-    return request(app)
-      .get('/')
-      .expect(200)
-      .expect("Hello World!")
+  test('should return home page string', async () => {
+    const res = await request(app).get('/');
+    expect(res.statusCode).toBe(200)
+    expect(res.text).toBe("Hello World!")
   });
 });
