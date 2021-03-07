@@ -16,3 +16,38 @@ describe('Integrate Supertest', () => {
     expect(res.text).toBe("Hello World!")
   });
 });
+
+describe('Hello Route', () => {
+  test('should return okay but with no content', async () => {
+    const res = await request(app).get('/hello');
+    expect(res.statusCode).toBe(204)
+    expect(res.body).toBe({})
+  });
+});
+
+describe('Sum Route', () => {
+  test('should return okay and the sum of supplied numbers', async () => {
+    const nums = [1, 3, 4]
+    const sum = nums.reduce((accum, currVal) => accum + currVal)
+    const res = await request(app).get(`/sum?numbers=${nums[0]},${nums[1]},${nums[2]}`)
+    expect(res.statusCode).toBe(200)
+    expect(res.body).toBe(sum)
+  });
+});
+
+describe('Reverse Words Route', () => {
+  test('should return okay and the reversed word of the supplied strings', async () => {
+    const string = "Hi, Octopus"
+    const reversed = "iH, supotcO"
+    const res = await request(app).get(`/reverse-words?sentence=${string}`)
+    expect(res.statusCode).toBe(200)
+    expect(res.body).toBe(reversed)
+  });
+});
+
+describe('Invalid Routes', () => {
+  test('should return status 404', async () => {
+    const res = await request(app).get('/someRandomRoute');
+    expect(res.statusCode).toBe(404)
+  });
+});
