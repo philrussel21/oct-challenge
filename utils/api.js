@@ -15,16 +15,21 @@ const reverseSentence = (strArr) => {
 
 const reverseWord = (str) => {
   const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  const wordArr = []
+  let newStr = ""
+  let alpha = []
   for (let i = 0; i < str.length; i++) {
     if (!letters.includes(str[i])) {
-      wordArr[i] = str[i]
+      newStr += (alpha.reverse().join('') + str[i])
+      alpha = []
     }
     else {
-      wordArr.unshift(str[i])
+      alpha.push(str[i])
+    }
+
+    if (i === str.length - 1) {
+      newStr += (alpha.reverse().join(''))
     }
   }
-  return wordArr.join('')
+  return newStr
 }
-
 module.exports = { sumOfNums, reverseSentence }
