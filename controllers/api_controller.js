@@ -1,7 +1,7 @@
 const { sumOfNums, reverseSentence } = require('../utils/api')
 
 const getHomePage = (req, res) => {
-  res.status(200).send("Hello World!")
+  res.status(200).send("Hello Octopus!")
 }
 
 const getHello = (req, res) => {
