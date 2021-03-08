@@ -25,8 +25,19 @@ describe('Hello Route', () => {
 });
 
 describe('Sum Route', () => {
-  test('should return 400 - Bad Request for invalid queries', async () => {
+  test('should return 400 - Bad Request when no query provided', async () => {
+    const res = await request(app).get(`/sum?numbers=`)
+    expect(res.statusCode).toBe(400)
+  });
+
+  test('should return 400 - Bad Request for invalid input in query', async () => {
     const nums = [1, 2, 'a']
+    const res = await request(app).get(`/sum?numbers=${nums[0]},${nums[1]},${nums[2]}`)
+    expect(res.statusCode).toBe(400)
+  });
+
+  test('should return 400 - Bad Request for decimal inputs in query', async () => {
+    const nums = [1, 2, 1.5]
     const res = await request(app).get(`/sum?numbers=${nums[0]},${nums[1]},${nums[2]}`)
     expect(res.statusCode).toBe(400)
   });
