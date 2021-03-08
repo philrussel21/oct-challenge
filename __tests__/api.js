@@ -43,12 +43,28 @@ describe('Sum Route', () => {
 
 describe('Reverse Words Route', () => {
   test('should return okay and the reversed word of the supplied strings', async () => {
+    const string = "Hello World"
+    const reversed = "olleH dlroW"
+    const res = await request(app).get(`/reverse-words?sentence=${string}`)
+    expect(res.statusCode).toBe(200)
+    expect(res.text).toBe(reversed)
+  });
+
+  test('should return okay and the reversed word of the supplied strings on strings ending with punctuation', async () => {
     const string = "Hi, Octopus"
     const reversed = "iH, supotcO"
     const res = await request(app).get(`/reverse-words?sentence=${string}`)
     expect(res.statusCode).toBe(200)
     expect(res.text).toBe(reversed)
   });
+
+  test('should return okay and the reversed word of the supplied strings on strings with punctuation in the middle', async () => {
+    const string = "oct0pus"
+    const reversed = "tco0sup"
+    const res = await request(app).get(`/reverse-words?sentence=${string}`)
+    expect(res.statusCode).toBe(200)
+    expect(res.text).toBe(reversed)
+  })
 });
 
 describe('Invalid Routes', () => {
