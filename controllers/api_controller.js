@@ -14,6 +14,11 @@ const getSum = (req, res) => {
   const nums = queryArr.map(num => +num)
 
   const sum = sumOfNums(nums)
+
+  // catches if there's a non-number input in the query
+  if (!Boolean(sum) && sum !== 0) {
+    return res.status(400).send("Invalid query provided.")
+  }
   // express can only send a buffer obj, string, object, bool or an array
   // as per instructions, the response should not be in JSON format
   res.status(200).send(sum.toString())
