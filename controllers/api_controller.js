@@ -1,4 +1,4 @@
-const { sumOfNums } = require('../utils/api')
+const { sumOfNums, reverseSentence } = require('../utils/api')
 
 const getHomePage = (req, res) => {
   res.status(200).send("Hello World!")
@@ -19,4 +19,12 @@ const getSum = (req, res) => {
   res.status(200).send(sum.toString())
 }
 
-module.exports = { getHomePage, getHello, getSum }
+const getReverseWords = (req, res) => {
+  // converts the variable query string to an array of words according to its space
+  const queryArr = req.query.sentence.split(' ')
+
+  const reversedSentence = reverseSentence(queryArr)
+  res.status(200).send(reversedSentence)
+}
+
+module.exports = { getHomePage, getHello, getSum, getReverseWords }

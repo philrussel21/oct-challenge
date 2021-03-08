@@ -3,7 +3,8 @@ const router = express.Router()
 const {
   getHomePage,
   getHello,
-  getSum
+  getSum,
+  getReverseWords
 } = require('./controllers/api_controller')
 
 
@@ -15,13 +16,7 @@ router.get('/hello', getHello);
 // Returns the sum of the numbers in the query
 router.get('/sum', getSum)
 
-// Creates a new 
-// router.('/', make);
-
-// Deletes a  with given id
-// router.delete('/:id', remove);
-
-// Updates a  with given id
-// router.patch('/:id', change);
+// Returns the sentence with its words reversed in the query
+router.get('/reverse-words', getReverseWords)
 
 module.exports = router

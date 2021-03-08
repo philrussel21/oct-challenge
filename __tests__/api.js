@@ -40,7 +40,7 @@ describe('Reverse Words Route', () => {
     const reversed = "iH, supotcO"
     const res = await request(app).get(`/reverse-words?sentence=${string}`)
     expect(res.statusCode).toBe(200)
-    expect(res.body).toBe(reversed)
+    expect(res.text).toBe(reversed)
   });
 });
 
